@@ -1,0 +1,38 @@
+{
+  "name": "reddit-client",
+  "version": "0.0.1",
+  "description": "A browser-based client for Reddit",
+  "main": "index.js",
+  "repository": "https://github.com/cymen/reddit-client",
+  "author": "Cymen Vig <cymenvig@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "config": "^1.25.1",
+    "react": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.7",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.0",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-plugin-transform-class-properties": "^6.23.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "css-loader": "^0.27.3",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "html-webpack-plugin": "^2.28.0",
+    "json-loader": "^0.5.4",
+    "postcss-loader": "^1.3.3",
+    "redux-devtools": "^3.3.2",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.13.2",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.2.1"
+  },
+  "scripts": {
+    "build": "./node_modules/webpack/bin/webpack.js --config webpack.config.js"
+  }
+}
