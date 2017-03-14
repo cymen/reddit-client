@@ -10,7 +10,8 @@ module.exports = {
 
   output: {
     filename: 'reddit-client.js',
-    path: path.resolve('./dist')
+    path: path.resolve('./dist'),
+    publicPath: '/',
   },
 
   module: {
