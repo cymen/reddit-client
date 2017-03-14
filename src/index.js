@@ -7,7 +7,6 @@ import {
 	Router,
 	browserHistory,
 } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from './configureStore';
 import App from './components/App';
 import Subreddit from './components/Subreddit';
