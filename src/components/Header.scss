@@ -1,0 +1,21 @@
+#header {
+  background-color: #cee3f8;
+  border-bottom: 1px solid #5f99cf;
+  position: relative;
+  z-index: 99;
+
+  .default-header {
+    background-position: 0 -1337px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 40px;
+    margin-bottom: 3px;
+    text-indent: -9999px;
+    vertical-align: bottom;
+    width: 120px;
+
+    &#header-img {
+      background-image: url('https://www.redditstatic.com/sprite-reddit.zGdS58P1VAk.png');
+    }
+  }
+}
