@@ -24,3 +24,4 @@ This project is using a convention of:
 
 * react-router 2.8.1 is used just because most familiar with that API
 * most styles are a copy and paste from Reddit (and thus aren't taking advantage of SCSS)
+* UI components tested during development -- no written tests (deemed lower priority due to time)
