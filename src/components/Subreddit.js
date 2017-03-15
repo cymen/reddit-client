@@ -13,6 +13,15 @@ class Subreddit extends React.Component {
     setSubreddit(subreddit);
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { setSubreddit } = nextProps;
+    const { subreddit } = nextProps.params;
+
+    if (subreddit !== this.props.params.subreddit) {
+      setSubreddit(subreddit);
+    }
+  }
+
   renderThing = (thing) => {
     return (
       <Thing key={thing.id} thing={thing} />
