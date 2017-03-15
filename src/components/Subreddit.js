@@ -8,17 +8,23 @@ class Subreddit extends React.Component {
     super(props);
 
     const { setSubreddit } = this.props;
-    const { subreddit } = this.props.params;
+    const {
+      subreddit,
+      view,
+    } = this.props.params;
 
-    setSubreddit(subreddit);
+    setSubreddit(subreddit, view);
   }
 
   componentWillReceiveProps(nextProps) {
     const { setSubreddit } = nextProps;
-    const { subreddit } = nextProps.params;
+    const {
+      subreddit,
+      view,
+    } = nextProps.params;
 
-    if (subreddit !== this.props.params.subreddit) {
-      setSubreddit(subreddit);
+    if (subreddit !== this.props.params.subreddit || view !== this.props.params.view) {
+      setSubreddit(subreddit, view);
     }
   }
 
@@ -51,7 +57,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    setSubreddit: (name) => dispatch(fetchSubreddit(name)),
+    setSubreddit: (name, view) => dispatch(fetchSubreddit(name, view)),
   };
 }
 
