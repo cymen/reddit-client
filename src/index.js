@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import {
 	IndexRedirect,
+  IndexRoute,
 	Route,
 	Router,
 	browserHistory,
@@ -20,7 +21,10 @@ render((
         <IndexRedirect to="r" />
         <Route path="r">
           <IndexRedirect to="news" />
-          <Route path=":subreddit" component={Subreddit} />
+          <Route path=":subreddit">
+            <IndexRoute component={Subreddit} />
+            <Route path=":view" component={Subreddit} />
+          </Route>
         </Route>
       </Route>
     </Router>
