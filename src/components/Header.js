@@ -21,7 +21,7 @@ class Header extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    activeSubreddit: state.subreddits.active,
+    activeSubreddit: state.subreddit.name,
   };
 };
 
