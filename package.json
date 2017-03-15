@@ -47,8 +47,8 @@
     "webpack-node-externals": "^1.5.4"
   },
   "scripts": {
-    "build": "./node_modules/webpack/bin/webpack.js --config webpack.config.js",
-    "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --history-api-fallback --watch",
-    "test": "mocha-webpack --webpack-config webpack.config-test.js \"test/**/*_spec.js\""
+    "build": "webpack --config webpack.config.js",
+    "start": "webpack-dev-server --history-api-fallback --watch",
+    "test": "mocha-webpack --webpack-config webpack.config-test.js 'test/**/*_spec.js'"
   }
 }
