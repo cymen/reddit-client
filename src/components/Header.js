@@ -27,10 +27,20 @@ const featured = [
   'WritingPrompts',
   'space',
 ];
+const views = [
+  'hot',
+  'new',
+  'rising',
+  'controversial',
+  'top',
+]; 
 
 class Header extends React.Component {
   render() {
-    const { activeSubreddit } = this.props;
+    const {
+      activeSubreddit,
+      activeView,
+    } = this.props;
 
     return (
       <div id="header">
@@ -56,8 +66,15 @@ class Header extends React.Component {
         <div id="header-bottom-left">
           <a href="https://reddit.com/" id="header-img" className="default-header">reddit.com</a>
           {activeSubreddit &&
-            <strong>/r/{activeSubreddit}</strong>
+            <span className="hover pagename redditname">{activeSubreddit}</span>
           }
+          <ul className="tabmenu">
+            {views.map((view) =>
+              <li key={view} className={classNames({selected: view === activeView})}>
+                <Link className="choice" to={`/r/${activeSubreddit}/${view}`}>{view}</Link>
+              </li>
+            )}
+          </ul>
         </div>
       </div>
     );
@@ -67,6 +84,7 @@ class Header extends React.Component {
 function mapStateToProps(state) {
   return {
     activeSubreddit: state.subreddit.name,
+    activeView: state.subreddit.view,
   };
 };
 
