@@ -13,20 +13,30 @@ class Subreddit extends React.Component {
     setSubreddit(subreddit);
   }
 
+  renderThing = (thing) => {
+    return (
+      <Thing key={thing.id} thing={thing} />
+    );
+  }
+
   render() {
-    const { subreddit } = this.props.params;
+    const { children } = this.props;
 
     return (
       <div className="subreddit">
-        <p>The {subreddit} subreddit!</p>
-        {Array(25).fill().map((_, i) => <Thing key={i} />)}
+        {children && children.map(this.renderThing)}
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
+  const children = (state.subreddit.children)
+    ? state.subreddit.children.map((c) => c.data)
+    : [];
+
   return {
+    children,
   };
 }
 
