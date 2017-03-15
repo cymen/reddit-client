@@ -64,7 +64,7 @@ class Header extends React.Component {
           </div> 
         </div>
         <div id="header-bottom-left">
-          <a href="https://reddit.com/" id="header-img" className="default-header">reddit.com</a>
+          <a href="https://reddit.com/" id="header-img" className="default-header" target="_blank">reddit.com</a>
           {activeSubreddit &&
             <span className="hover pagename redditname">{activeSubreddit}</span>
           }
