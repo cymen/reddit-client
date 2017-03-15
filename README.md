@@ -12,6 +12,13 @@ intended to be an actually useful Reddit client!
 
 To run the tests: `npm run test`
 
+## Code structure
+
+* `src/index.js` is entry point
+* `src/components` has all the React components (React also used in `src/index.js`)
+* `src` has redux things (store, actions, reducers)
+* `test` has tests for non-React things -- I opted to not test the components programmatically due to time constraints
+
 ## Conventions
 
 ### imports
@@ -30,6 +37,7 @@ This project is using a convention of:
 
 ## Feedback on directions
 
-* wasted a fair amount of time on authentication only to realize it was not needed -- it would be helpful to mention that in the writeup to make it clear the scope is not as big as it might appear on first read through
+* it would be nice to make it clear that no authentication is needed -- I spent a fair amount of time assuming the Reddit API docs having "oauth" next to the listing endpoints meant I actually needed to go figure out a way to do authentication (that would work w/o a server, etc) so it would be helpful to mention that in the writeup to make it clear the scope is not as big as it might appear on first read through
 * not clear if should show only 25 things in a subreddit or allow fetching more -- going to assume don't need to fetch more
-* meaning of "reactive approach" is a big ambigious -- would be good to clarify (I'm assuming I'm using a reactive approach)
+* meaning of "reactive approach" is a bit ambigious -- would be good to clarify (I'm assuming I'm using a reactive approach)
+* keeping page in the same place I am interpreting as "keeping browser scrolled down the same amount (if it is scrolled down)" 
