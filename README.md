@@ -18,11 +18,11 @@ To run the tests: `npm run test`
 * `src/index.js` is entry point
 * `src/components` has all the React components (React also used in `src/index.js`)
 * `src` has redux things (store, actions, reducers)
-* `test` has tests for non-React things -- I opted to not test the components programmatically due to time constraints
+* `test` has tests for non-React things
 
 ## Conventions
 
-### imports
+### imports in React components
 
 This project is using a convention of:
 
@@ -33,8 +33,8 @@ This project is using a convention of:
 ## Notes
 
 * react-router 2.8.1 is used just because most familiar with that API
-* most styles are a copy and paste from Reddit (and thus aren't taking advantage of SCSS)
-* UI components tested during development -- no written tests (deemed lower priority due to time)
+* most styles are a copy and paste from Reddit (and thus aren't taking much advantage of SCSS)
+* UI components tested manually during development -- no written tests (deemed lower priority due to time)
 
 ## Feedback on directions
 
