@@ -6,11 +6,13 @@ import {
 
 function subreddit(state = {
   name: null,
+  view: 'hot',
 }, action) {
   switch (action.type) {
     case REQUEST_SUBREDDIT:
       return Object.assign({}, state, {
         name: action.name,
+        view: action.view,
       });
 
     case RECEIVE_SUBREDDIT:
