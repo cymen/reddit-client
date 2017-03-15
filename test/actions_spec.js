@@ -9,15 +9,15 @@ import {
   fetchSubreddit,
 } from '../src/actions';
 
-const middlewares = [ thunk ];
+const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe('actions', function() {
-  afterEach(function() {
+describe('actions', () => {
+  afterEach(() => {
     nock.cleanAll();
   });
 
-  it('creates RECEIVE_SUBREDDIT when fetching subreddit finishes', function() {
+  it('creates RECEIVE_SUBREDDIT when fetching subreddit finishes', () => {
     nock('https://api.reddit.com/')
       .get('/r/news/hot')
       .reply(200, {
@@ -26,74 +26,74 @@ describe('actions', function() {
             {
               kind: 't3',
               data: 'some data here...',
-            }
-          ]
-        }
+            },
+          ],
+        },
       });
 
-      const expectedActions = [
-        {
-          type: REQUEST_SUBREDDIT,
-          name: 'news',
-          view: 'hot',
+    const expectedActions = [
+      {
+        type: REQUEST_SUBREDDIT,
+        name: 'news',
+        view: 'hot',
+      },
+      {
+        type: RECEIVE_SUBREDDIT,
+        name: 'news',
+        view: 'hot',
+        data: {
+          children: [
+            {
+              kind: 't3',
+              data: 'some data here...',
+            },
+          ],
         },
-        {
-          type: RECEIVE_SUBREDDIT,
-          name: 'news',
-          view: 'hot',
-          data: {
-            children: [
-              {
-                kind: 't3',
-                data: 'some data here...',
-              }
-            ]
-          },
-        },
-      ];
+      },
+    ];
 
-      const store = mockStore({
-        subreddit: {},
+    const store = mockStore({
+      subreddit: {},
+    });
+
+    return store.dispatch(fetchSubreddit('news', 'hot'))
+      .then(() => {
+        expect(store.getActions()).to.eql(expectedActions);
       });
-
-      return store.dispatch(fetchSubreddit('news', 'hot'))
-        .then(() => {
-          expect(store.getActions()).to.eql(expectedActions);
-        });
   });
 
-  it('creates ERROR_SUBREDDIT when fetching subreddit errors', function() {
+  it('creates ERROR_SUBREDDIT when fetching subreddit errors', () => {
     nock('https://api.reddit.com/')
       .get('/r/news/hot')
       .replyWithError('some error');
 
-      const expectedActions = [
-        {
-          type: REQUEST_SUBREDDIT,
-          name: 'news',
-          view: 'hot',
+    const expectedActions = [
+      {
+        type: REQUEST_SUBREDDIT,
+        name: 'news',
+        view: 'hot',
+      },
+      {
+        type: ERROR_SUBREDDIT,
+        name: 'news',
+        view: 'hot',
+        error: {
+          code: undefined,
+          errno: undefined,
+          message: 'request to https://api.reddit.com/r/news/hot failed, reason: some error',
+          name: 'FetchError',
+          type: 'system',
         },
-        {
-          type: ERROR_SUBREDDIT,
-          name: 'news',
-          view: 'hot',
-          error: {
-            code: undefined,
-            errno: undefined,
-            message: "request to https://api.reddit.com/r/news/hot failed, reason: some error",
-            name: 'FetchError',
-            type: 'system',
-          },
-        },
-      ];
+      },
+    ];
 
-      const store = mockStore({
-        subreddit: {},
+    const store = mockStore({
+      subreddit: {},
+    });
+
+    return store.dispatch(fetchSubreddit('news', 'hot'))
+      .then(() => {
+        expect(store.getActions()).to.eql(expectedActions);
       });
-
-      return store.dispatch(fetchSubreddit('news', 'hot'))
-        .then(() => {
-          expect(store.getActions()).to.eql(expectedActions);
-        });
   });
 });

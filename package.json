@@ -61,6 +61,6 @@
     "build": "webpack --config webpack.config.js",
     "start": "webpack-dev-server --history-api-fallback --watch",
     "test": "mocha-webpack --webpack-config webpack.config-test.js 'test/**/*_spec.js'",
-    "lint": "eslint src"
+    "lint": "eslint src test"
   }
 }

@@ -1,5 +1,6 @@
-var jsdom = require('jsdom').jsdom;
-var exposedProperties = [
+const jsdom = require('jsdom').jsdom;
+
+const exposedProperties = [
   'window',
   'navigator',
   'document',

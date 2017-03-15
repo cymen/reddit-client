@@ -1,20 +1,19 @@
 import { expect } from 'chai';
 import timekeeper from 'timekeeper';
-const frozenTime = Date.now();
-timekeeper.freeze(frozenTime);
 import { subreddit } from '../src/reducers';
 import {
   REQUEST_SUBREDDIT,
   RECEIVE_SUBREDDIT,
-  ERROR_SUBREDDIT,
 } from '../src/actions';
 
-describe('subreddit reducer', function() {
-  it('should return the initial state', function() {
-    const state = subreddit(undefined, {});
+const frozenTime = Date.now();
+timekeeper.freeze(frozenTime);
 
+
+describe('subreddit reducer', () => {
+  it('should return the initial state', () => {
     expect(
-      subreddit(undefined, {})
+      subreddit(undefined, {}),
     ).to.eql({
       isFetching: false,
       lastFetch: frozenTime,
@@ -23,13 +22,13 @@ describe('subreddit reducer', function() {
     });
   });
 
-  it('should handle REQUEST_SUBREDDIT', function() {
+  it('should handle REQUEST_SUBREDDIT', () => {
     expect(
       subreddit(undefined, {
         type: REQUEST_SUBREDDIT,
         name: 'xyz',
         view: '42',
-      })
+      }),
     ).to.eql({
       isFetching: true,
       lastFetch: frozenTime,
@@ -38,12 +37,12 @@ describe('subreddit reducer', function() {
     });
   });
 
-  it('should handle RECEIVE_SUBREDDIT', function() {
+  it('should handle RECEIVE_SUBREDDIT', () => {
     expect(
       subreddit(
         {
           name: 'annarbor',
-          view: 'new'
+          view: 'new',
         },
         {
           type: RECEIVE_SUBREDDIT,
@@ -54,8 +53,8 @@ describe('subreddit reducer', function() {
             after: 'xyz10',
             before: 'ooo3',
           },
-        }
-      )
+        },
+      ),
     ).to.eql({
       isFetching: false,
       lastFetch: frozenTime,
@@ -68,4 +67,4 @@ describe('subreddit reducer', function() {
   });
 
   it('should handle ERROR_SUBREDDIT');
-}); 
+});
