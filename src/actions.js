@@ -1,8 +1,8 @@
+import { DEFAULT_VIEW } from './defaults';
+
 export const REQUEST_SUBREDDIT = 'REQUEST_SUBREDDIT';
 export const RECEIVE_SUBREDDIT = 'RECEIVE_SUBREDDIT';
 export const ERROR_SUBREDDIT = 'ERROR_SUBREDDIT';
-
-const DEFAULT_VIEW = 'hot';
 
 function requestSubreddit(name, view) {
   return {

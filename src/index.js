@@ -11,8 +11,8 @@ import {
 import store from './store';
 import App from './components/App';
 import Subreddit from './components/Subreddit';
-
-const store = configureStore();
+import './poller';
+import { DEFAULT_SUBREDDIT } from './defaults';
 
 render((
   <Provider store={store}>
@@ -20,7 +20,7 @@ render((
       <Route path="/" component={App}>
         <IndexRedirect to="r" />
         <Route path="r">
-          <IndexRedirect to="news" />
+          <IndexRedirect to={DEFAULT_SUBREDDIT} />
           <Route path=":subreddit">
             <IndexRoute component={Subreddit} />
             <Route path=":view" component={Subreddit} />

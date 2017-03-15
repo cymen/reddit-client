@@ -3,11 +3,16 @@ import {
   RECEIVE_SUBREDDIT,
   ERROR_SUBREDDIT,
 } from './actions';
+import {
+  DEFAULT_SUBREDDIT,
+  DEFAULT_VIEW,
+} from './defaults';
 
 function subreddit(state = {
   isFetching: false,
-  name: null,
-  view: 'hot',
+  lastFetch: Date.now(),
+  name: DEFAULT_SUBREDDIT,
+  view: DEFAULT_VIEW,
 }, action) {
   switch (action.type) {
     case REQUEST_SUBREDDIT:
@@ -21,12 +26,14 @@ function subreddit(state = {
       const { children, after, before } = action.data
       const isFetching = action.name === state.name && action.view === state.view;
       return Object.assign(
+        {},
+        state,
+        action.data,
         {
           isFetching: !isFetching,
+          lastFetch: Date.now(),
           name: action.name,
         },
-        state,
-        action.data
       );
 
     default:
