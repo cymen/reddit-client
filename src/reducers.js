@@ -8,7 +8,7 @@ import {
   DEFAULT_VIEW,
 } from './defaults';
 
-function subreddit(state = {
+export function subreddit(state = {
   isFetching: false,
   lastFetch: Date.now(),
   name: DEFAULT_SUBREDDIT,
