@@ -61,4 +61,39 @@ describe('actions', function() {
           expect(store.getActions()).to.eql(expectedActions);
         });
   });
+
+  it('creates ERROR_SUBREDDIT when fetching subreddit errors', function() {
+    nock('https://api.reddit.com/')
+      .get('/r/news/hot')
+      .replyWithError('some error');
+
+      const expectedActions = [
+        {
+          type: REQUEST_SUBREDDIT,
+          name: 'news',
+          view: 'hot',
+        },
+        {
+          type: ERROR_SUBREDDIT,
+          name: 'news',
+          view: 'hot',
+          error: {
+            code: undefined,
+            errno: undefined,
+            message: "request to https://api.reddit.com/r/news/hot failed, reason: some error",
+            name: 'FetchError',
+            type: 'system',
+          },
+        },
+      ];
+
+      const store = mockStore({
+        subreddit: {},
+      });
+
+      return store.dispatch(fetchSubreddit('news', 'hot'))
+        .then(() => {
+          expect(store.getActions()).to.eql(expectedActions);
+        });
+  });
 });
