@@ -9,17 +9,19 @@ function requestSubreddit(name) {
   };
 }
 
-function receiveSubreddit(data) {
+function receiveSubreddit(name, response) {
   return {
     type: RECEIVE_SUBREDDIT,
-    data
+    name,
+    data: response.data,
   };
 }
 
-function errorSubreddit(error) {
+function errorSubreddit(name, error) {
   return {
     type: ERROR_SUBREDDIT,
-    error
+    name,
+    error,
   };
 }
 
@@ -28,7 +30,7 @@ export function fetchSubreddit(name) {
     dispatch(requestSubreddit(name));
     return fetch(`https://api.reddit.com/r/${name}/hot`)
       .then((response) => response.json())
-      .then((json) => dispatch(receiveSubreddit(json)))
-      .catch((error) => dispatch(errorSubreddit(error)));
+      .then((json) => dispatch(receiveSubreddit(name, json)))
+      .catch((error) => dispatch(errorSubreddit(name, error)));
   };
 }
