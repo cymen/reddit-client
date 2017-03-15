@@ -11,8 +11,10 @@ import {
 import store from './store';
 import App from './components/App';
 import Subreddit from './components/Subreddit';
-import './poller';
+import { run } from './poller';
 import { DEFAULT_SUBREDDIT } from './defaults';
+
+run(); // start the background poller
 
 render((
   <Provider store={store}>

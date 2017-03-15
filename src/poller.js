@@ -2,8 +2,7 @@ import store from './store';
 import { fetchSubreddit } from './actions';
 import { POLL_INTERVAL_IN_SECONDS } from './defaults';
 
-function shouldFetch() {
-  const state = store.getState();
+export function shouldFetch(state) {
   const {
     isFetching,
     lastFetch,
@@ -12,9 +11,10 @@ function shouldFetch() {
   return !isFetching && (Date.now() - lastFetch) >= (POLL_INTERVAL_IN_SECONDS * 1000);
 }
 
-function loop() {
-  if (shouldFetch()) {
-    const state = store.getState();
+export function loop() {
+  const state = store.getState();
+
+  if (shouldFetch(state)) {
     const {
       name,
       view,
@@ -23,4 +23,6 @@ function loop() {
   }
 }
 
-setInterval(loop, 1000);
+export function run() {
+  setInterval(loop, 1000);
+}
