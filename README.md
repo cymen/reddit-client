@@ -9,6 +9,7 @@ intended to be an actually useful Reddit client!
 2. Install node modules with `yarn`
 3. Edit config/development.js to contain valid Reddit credentials
 4. Run `npm start`
+5. Open browser to [http://localhost:8080](http://localhost:8080)
 
 To run the tests: `npm run test`
 
