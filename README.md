@@ -26,9 +26,9 @@ To run the tests: `npm run test`
 
 This project is using a convention of:
 
-1. style includes (ie `import './Component.scss';`)
-2. non-local includes (ie `import React from 'react';`)
-3. local includes (ie `import Header from './Header';`)
+1. non-local includes (ie `import React from 'react';`)
+2. local includes (ie `import Header from './Header';`)
+3. style includes (ie `import './Component.scss';`)
 
 ## Notes
 
