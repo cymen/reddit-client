@@ -10,6 +10,8 @@ intended to be an actually useful Reddit client!
 3. Edit config/development.js to contain valid Reddit credentials
 4. Run `npm start`
 
+To run the tests: `npm run test`
+
 ## Conventions
 
 ### imports
