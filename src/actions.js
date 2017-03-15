@@ -1,3 +1,4 @@
+import fetch from 'isomorphic-fetch';
 import { DEFAULT_VIEW } from './defaults';
 
 export const REQUEST_SUBREDDIT = 'REQUEST_SUBREDDIT';
