@@ -1,8 +1,8 @@
-import './Thing.scss';
 import React from 'react';
 import classNames from 'classnames';
 import isImage from 'is-image';
 import moment from 'moment';
+import './Thing.scss';
 
 export default class Thing extends React.Component {
   renderThumbnail = () => {
@@ -14,7 +14,7 @@ export default class Thing extends React.Component {
     if (thumbnail) {
       return (
         <a
-          className={classNames("thumbnail", {
+          className={classNames('thumbnail', {
             default: !isImage(thumbnail),
           })}
           href={url}
@@ -25,6 +25,8 @@ export default class Thing extends React.Component {
         </a>
       );
     }
+
+    return <span />;
   }
 
   renderDomain = () => {
@@ -38,8 +40,8 @@ export default class Thing extends React.Component {
   render() {
     const {
       author,
-      created_utc,
-      num_comments,
+      created_utc: createdUtc,
+      num_comments: numComments,
       permalink,
       title,
       url,
@@ -50,10 +52,10 @@ export default class Thing extends React.Component {
         {this.renderThumbnail()}
         <div className="entry">
           <p className="title"><a href={url} target="_blank">{title}</a> {this.renderDomain()}</p>
-          <p className="tagline">submitted {moment(created_utc * 1000).from()} by {author}</p>
+          <p className="tagline">submitted {moment(createdUtc * 1000).from()} by {author}</p>
           <ul className="flat-list buttons">
             <li>
-              <a href={`https://www.reddit.com${permalink}`} target="_blank">{num_comments} comments</a>
+              <a href={`https://www.reddit.com${permalink}`} target="_blank">{numComments} comments</a>
             </li>
           </ul>
         </div>

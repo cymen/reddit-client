@@ -1,7 +1,6 @@
 import {
   REQUEST_SUBREDDIT,
   RECEIVE_SUBREDDIT,
-  ERROR_SUBREDDIT,
 } from './actions';
 import {
   DEFAULT_SUBREDDIT,
@@ -22,8 +21,7 @@ export function subreddit(state = {
         view: action.view,
       });
 
-    case RECEIVE_SUBREDDIT:
-      const { children, after, before } = action.data
+    case RECEIVE_SUBREDDIT: {
       const isFetching = action.name === state.name && action.view === state.view;
       return Object.assign(
         {},
@@ -35,6 +33,7 @@ export function subreddit(state = {
           name: action.name,
         },
       );
+    }
 
     default:
       return state;

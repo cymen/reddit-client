@@ -1,7 +1,7 @@
 import React from 'react';
-import Thing from './Thing';
 import { connect } from 'react-redux';
 import { fetchSubreddit } from '../actions';
+import Thing from './Thing';
 
 class Subreddit extends React.Component {
   constructor(props) {
@@ -28,11 +28,9 @@ class Subreddit extends React.Component {
     }
   }
 
-  renderThing = (thing) => {
-    return (
-      <Thing key={thing.id} thing={thing} />
-    );
-  }
+  renderThing = thing => (
+    <Thing key={thing.id} thing={thing} />
+  );
 
   render() {
     const { children } = this.props;
@@ -47,7 +45,7 @@ class Subreddit extends React.Component {
 
 function mapStateToProps(state) {
   const children = (state.subreddit.children)
-    ? state.subreddit.children.map((c) => c.data)
+    ? state.subreddit.children.map(c => c.data)
     : [];
 
   return {
@@ -55,7 +53,7 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch, ownProps) {
+function mapDispatchToProps(dispatch) {
   return {
     setSubreddit: (name, view) => dispatch(fetchSubreddit(name, view)),
   };

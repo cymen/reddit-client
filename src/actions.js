@@ -31,14 +31,12 @@ function errorSubreddit(name, view, error) {
   };
 }
 
-export function fetchSubreddit(name, view) {
-  view = view || DEFAULT_VIEW;
-
+export function fetchSubreddit(name, view = DEFAULT_VIEW) {
   return (dispatch) => {
     dispatch(requestSubreddit(name, view));
     return fetch(`https://api.reddit.com/r/${name}/${view}`)
-      .then((response) => response.json())
-      .then((json) => dispatch(receiveSubreddit(name, view, json)))
-      .catch((error) => dispatch(errorSubreddit(name, view, error)));
+      .then(response => response.json())
+      .then(json => dispatch(receiveSubreddit(name, view, json)))
+      .catch(error => dispatch(errorSubreddit(name, view, error)));
   };
 }

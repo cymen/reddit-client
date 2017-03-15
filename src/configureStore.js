@@ -17,13 +17,13 @@ export default function configureStore(initialState) {
     middleware,
     (window && window.devToolsExtension)
       ? window.devToolsExtension()
-      : (f) => f
+      : f => f,
   );
 
   const store = createStore(
     reducer,
     initialState,
-    enhancer
+    enhancer,
   );
 
   return store;

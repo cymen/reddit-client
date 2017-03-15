@@ -1,6 +1,6 @@
-import './App.scss';
 import React from 'react';
 import Header from './Header';
+import './App.scss';
 
 export default class App extends React.Component {
   render() {
@@ -12,7 +12,7 @@ export default class App extends React.Component {
         <div>
           {children}
         </div>
-      </div>      
+      </div>
     );
   }
 }
