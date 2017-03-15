@@ -5,6 +5,7 @@ import {
   REQUEST_SUBREDDIT,
   RECEIVE_SUBREDDIT,
 } from '../src/actions';
+import { DEFAULT_SUBREDDIT } from '../src/defaults';
 
 const frozenTime = Date.now();
 timekeeper.freeze(frozenTime);
@@ -17,7 +18,7 @@ describe('subreddit reducer', () => {
     ).to.eql({
       isFetching: false,
       lastFetch: frozenTime,
-      name: 'news',
+      name: DEFAULT_SUBREDDIT,
       view: 'hot',
     });
   });
