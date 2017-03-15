@@ -7,7 +7,9 @@
   "author": "Cymen Vig <cymenvig@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "classnames": "^2.2.5",
     "config": "^1.25.1",
+    "is-image": "^1.0.1",
     "moment": "^2.17.1",
     "react": "^15.4.2",
     "react-redux": "^5.0.3",
