@@ -13,7 +13,12 @@ export default function configureStore(initialState) {
   });
 
   const middleware = applyMiddleware(thunkMiddleware);
-  const enhancer = compose(middleware);
+  const enhancer = compose(
+    middleware,
+    (window.devToolsExtension)
+      ? window.devToolsExtension()
+      : (f) => f
+  );
 
   const store = createStore(
     reducer,
