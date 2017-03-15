@@ -42,13 +42,14 @@ export default class Thing extends React.Component {
       num_comments,
       permalink,
       title,
+      url,
     } = this.props.thing;
 
     return (
       <div className="thing">
         {this.renderThumbnail()}
         <div className="entry">
-          <p className="title"><a href="#" target="_blank">{title}</a> {this.renderDomain()}</p>
+          <p className="title"><a href={url} target="_blank">{title}</a> {this.renderDomain()}</p>
           <p className="tagline">submitted {moment(created_utc * 1000).from()} by {author}</p>
           <ul className="flat-list buttons">
             <li>
