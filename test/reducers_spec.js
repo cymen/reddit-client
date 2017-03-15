@@ -66,4 +66,6 @@ describe('subreddit reducer', function() {
       before: 'ooo3',
     });
   });
+
+  it('should handle ERROR_SUBREDDIT');
 }); 
