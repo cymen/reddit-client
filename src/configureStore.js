@@ -15,7 +15,7 @@ export default function configureStore(initialState) {
   const middleware = applyMiddleware(thunkMiddleware);
   const enhancer = compose(
     middleware,
-    (window.devToolsExtension)
+    (window && window.devToolsExtension)
       ? window.devToolsExtension()
       : (f) => f
   );
