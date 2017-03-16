@@ -31,6 +31,7 @@ export function subreddit(state = {
           isFetching: !isFetching,
           lastFetch: Date.now(),
           name: action.name,
+          view: action.view,
         },
       );
     }
